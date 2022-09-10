@@ -25,7 +25,7 @@ class AuthResetPasswordRequest extends FormRequest
     {
         return [
             'email' =>'required|email',
-            'password' => 'required|min:8|max:30|regex:(^[a-zA-Z0-9 _-]+[a-zA-Z0-9-14\-[a-zA-Z0-9-.]+$)',
+            'password' => 'required|string|min:8|max:30|regex:(^[a-zA-Z0-9 _-]+[a-zA-Z0-9-14\-[a-zA-Z0-9-.]+$)',
             'token' => 'required|string',
         ];
     }
@@ -33,12 +33,12 @@ class AuthResetPasswordRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.required' => 'este campo é obrigatório',
-            'email.email' => 'este Email inválido',
-            'password.required' => 'Este campo é obrigatório',
-            'password.min' => 'A senha precisa de no minimo 8 caracteres',
-            'password.max' => 'A senha excedeu o numero maximo de caracteres',
-            'token.required' => 'este campo é obrigatório',
+            'email.required' => 'este campo é obrigatório.',
+            'email.email' => 'Este email inválido.',
+            'password.required' => 'Este campo é obrigatório.',
+            'password.min' => 'A senha precisa de no minimo 8 caracteres.',
+            'password.max' => 'A senha excedeu o numero maximo de caracteres.',
+            'token.required' => 'Este campo é obrigatório.',
         ];
     }
 }
