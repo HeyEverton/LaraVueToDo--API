@@ -6,6 +6,7 @@ use App\Http\Requests\{
     AuthForgotPasswordRequest,
     AuthLoginRequest,
     AuthRegisterRequest,
+    AuthResetPasswordRequest,
     AuthVerifyEmailRequest
 };
 
@@ -54,5 +55,11 @@ class AuthController extends Controller
     {
         $input = $request->validated();
         return $this->authService->forgotPassword($input['email']);
+    }
+
+    public function resetPassword(AuthResetPasswordRequest $request)
+    {
+        $input = $request->validated();
+        return $this->authService->resetPassword($input['email'], $input['password'], $input['token']);
     }
 }

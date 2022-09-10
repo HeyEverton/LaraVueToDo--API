@@ -19,9 +19,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::prefix('v1')->group(function() {
+    //LOGIN USER 
     Route::post('login', [AuthController::class, 'login']);
+    //REGISTER USER
     Route::post('register', [AuthController::class, 'register']);
+    //VERIFY EMAIL USER
     Route::post('verify-email', [AuthController::class, 'verifyEmail']);
+    //FORGOT PASSWORD EMAIL SUSER
     Route::post('forgot-password', [AuthController::class, 'forgotPassword']);
+    //CHANCGE PASSWORD USER 
+    Route::post('reset-password', [AuthController::class, 'resetPassword']);
 
 });

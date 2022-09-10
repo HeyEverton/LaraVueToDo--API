@@ -25,6 +25,7 @@ class AuthForgotPasswordRequest extends FormRequest
     {
         return [
             'email' => 'required|email',
+            'token' => 'string',
         ];
     }
 
@@ -32,6 +33,8 @@ class AuthForgotPasswordRequest extends FormRequest
     {
         return [
             'email.required' => 'Este campo é obrigatório',
+            'email.email' => 'Este campo requer um, e-mail válido',
+            'token.string' => 'Token inválido',
         ];
     }
 }
