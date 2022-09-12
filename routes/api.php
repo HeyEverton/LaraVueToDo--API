@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AuthController, MeController, TodoController};
+use App\Http\Controllers\{AuthController, MeController, TodoController, TodoTaskController};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::prefix('v1')->group(function() {
+Route::prefix('v1')->group(function () {
     //LOGIN USER 
     Route::post('login', [AuthController::class, 'login']);
     //REGISTER USER
@@ -30,14 +30,13 @@ Route::prefix('v1')->group(function() {
     //CHANCGE PASSWORD USER 
     Route::post('reset-password', [AuthController::class, 'resetPassword']);
 
-    Route::prefix('me')->group(function() {
+    Route::prefix('me')->group(function () {
 
         Route::get('', [MeController::class, 'index']);
         Route::put('', [MeController::class, 'update']);
     });
 
-    Route::prefix('todos')->group(function() {  
-        
+    Route::prefix('todos')->group(function () {
         Route::get('', [TodoController::class, 'index']);
         Route::get('{todo}', [TodoController::class, 'show']);
         Route::post('{todo}/tasks', [TodoController::class, 'addTask']);
@@ -46,4 +45,7 @@ Route::prefix('v1')->group(function() {
         Route::delete('{todo}', [TodoController::class, 'destroy']);
     });
 
+    Route::prefix('todo-tasks')->group(function () {
+        Route::put('{todoTask}', [TodoTaskController::class, 'update']);
+    });
 });
