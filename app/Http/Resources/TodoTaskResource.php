@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TodoResource extends JsonResource
+class TodoTaskResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +15,11 @@ class TodoResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => (int) $this->id,
-            'label' => (string) $this->label,
-            'created_at' => (string) $this->created_at,
-            'updated_at' => (string) $this->updated_at,
-            'tasks' => TodoTaskResource::collection($this->whenLoaded('tasks')),
+            'id' => $this->id,
+            'label' => $this->label,
+            'is_complete' => $this->is_complete,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }
