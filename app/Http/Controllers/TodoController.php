@@ -47,4 +47,15 @@ class TodoController extends Controller
     {
         $todo->delete();
     }
+
+    public function addTask(Todo $todo, TodoStoreRequest $request)
+    {
+        $input = $request->validated();
+
+        $todoTask = $todo->tasks()->create($input);
+        
+        return new TodoResource($todoTask);
+    }
+
+
 }

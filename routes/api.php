@@ -40,6 +40,7 @@ Route::prefix('v1')->group(function() {
         
         Route::get('', [TodoController::class, 'index']);
         Route::get('{todo}', [TodoController::class, 'show']);
+        Route::post('{todo}/tasks', [TodoController::class, 'addTask']);
         Route::post('', [TodoController::class, 'store']);
         Route::put('{todo}', [TodoController::class, 'update']);
         Route::delete('{todo}', [TodoController::class, 'destroy']);
